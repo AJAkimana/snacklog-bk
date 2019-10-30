@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import expressSession from 'express-session';
+import routes from '../routes';
 
 dotenv.config();
 
@@ -36,7 +37,7 @@ app.use((req, res, next) => {
   }
   next();
 });
-// app.use('/api', apiRoutes);
+app.use('/', routes);
 app.use((err, req, res, next) => {
   res.status(500).json({
     status: 500,
