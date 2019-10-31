@@ -1,6 +1,8 @@
 import { dataToJson, mustBeInArray } from '../helpers';
 
-const allProducts = dataToJson();
+const mockedProducts = `${__dirname}/../mocks/MOCK_DATA.json`;
+
+const allProducts = dataToJson(mockedProducts);
 export class Product {
   static find() {
     return allProducts;

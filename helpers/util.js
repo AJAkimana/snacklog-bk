@@ -1,11 +1,9 @@
 import { readFileSync } from 'fs';
 import lodash from 'lodash';
 
-const mockedJson = `${__dirname}/mocked_products.json`;
-
-export const dataToJson = () => {
-  const productsJson = readFileSync(mockedJson);
-  return JSON.parse(productsJson);
+export const dataToJson = jsonFile => {
+  const jsonData = readFileSync(jsonFile);
+  return JSON.parse(jsonData);
 };
 
 export const paginate = (items, pageSize, pageNumber) => {
@@ -26,8 +24,8 @@ export const mustBeInArray = (dataArray, id) => {
 };
 
 export const serverResponse = (res, statusCode, message, data) => {
-  const error = statusCode >= 400 ? 'error' : 'message';
+  const messageType = statusCode >= 400 ? 'error' : 'message';
   return res
     .status(statusCode)
-    .json({ status: statusCode, [error]: message, data });
+    .json({ status: statusCode, [messageType]: message, data });
 };

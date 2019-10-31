@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import expressSession from 'express-session';
 import routes from '../routes';
+import { monitorDevActions, handleErrors, userCarts } from '../middlewares';
 
 dotenv.config();
 
@@ -25,31 +26,10 @@ app.use(
     cookie: { path: '/', httpOnly: true, secure: false, maxAge: weeks }
   })
 );
-
-app.use((req, res, next) => {
-  if (process.env.NODE_ENV === 'development') {
-    const user = ' made req';
-    console.log(
-      `User===>${user}, Route: ${req.path}, method: ${
-        req.method
-      }, body: ${JSON.stringify(req.body)}`
-    );
-  }
-  next();
-});
+app.use(userCarts);
+app.use(monitorDevActions);
 app.use('/', routes);
-app.use((err, req, res, next) => {
-  res.status(500).json({
-    status: 500,
-    error: err.message
-  });
-});
-app.all('*', (req, res) =>
-  res.status(404).send({
-    status: 404,
-    error: 'Sorry you have lost!'
-  })
-);
+app.use(handleErrors);
 app.listen(port, () => console.log(`listening on port ${port}`));
 
 export default app;
