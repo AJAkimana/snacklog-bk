@@ -1,11 +1,11 @@
-import { dataToJson, mustBeInArray } from '../helpers';
+import { dataToJson, mustBeInArray, sortByReleaseDate } from '../helpers';
 
-const mockedProducts = `${__dirname}/../mocks/MOCK_DATA.json`;
+const mockedProducts = `${__dirname}/../mocks/mocked_products.json`;
 
 const allProducts = dataToJson(mockedProducts);
 export class Product {
-  static find() {
-    return allProducts;
+  static find({ release_date }) {
+    return allProducts.sort(sortByReleaseDate);
   }
 
   static findById(productId) {

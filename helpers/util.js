@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs';
 import lodash from 'lodash';
+import { Product } from '../models/product.model';
 
 export const dataToJson = jsonFile => {
   const jsonData = readFileSync(jsonFile);
@@ -15,7 +16,7 @@ export const paginate = (items, pageSize, pageNumber) => {
     .slice(startIndex)
     .take(pageSize)
     .value();
-  return { paginatedItems, pages };
+  return { paginatedItems, pageNumber, pageSize, pages };
 };
 
 export const mustBeInArray = (dataArray, id) => {
@@ -28,4 +29,25 @@ export const serverResponse = (res, statusCode, message, data) => {
   return res
     .status(statusCode)
     .json({ status: statusCode, [messageType]: message, data });
+};
+export const getUserCartProducts = products => {
+  const userCarts = [];
+  products.map(product => {
+    const { id, name, picture, model, description, price } = Product.findById(
+      product.product_id
+    );
+    userCarts.push({
+      id,
+      name,
+      picture,
+      model,
+      description,
+      price,
+      size: product.size
+    });
+  });
+  return userCarts;
+};
+export const sortByReleaseDate = (start, end) => {
+  return new Date(end.release_date) - new Date(start.release_date);
 };

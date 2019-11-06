@@ -7,3 +7,12 @@ export const doesProductExist = (req, res, next) => {
   if (product) return next();
   return serverResponse(res, 404, 'Product does not exit');
 };
+
+export const validatePagination = (req, res, next) => {
+  let { page, pageSize } = req.query;
+  if (!pageSize && !page && isNaN(page) && isNaN(pageSize)) {
+    req.query.page = 1;
+    req.query.pageSize = 10;
+  }
+  return next();
+};

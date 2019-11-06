@@ -8,5 +8,6 @@ export const correctCartData = {
     names: 'User names test',
     username: 'user-test',
     address: 'address-test'
-  }
+  },
+  size: 37
 };

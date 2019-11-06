@@ -3,11 +3,14 @@ import {
   getProducts,
   getProductById
 } from '../../controllers/product.controller';
-import { doesProductExist } from '../../middlewares/product.middleware';
+import {
+  doesProductExist,
+  validatePagination
+} from '../../middlewares/product.middleware';
 
 const productRouters = express.Router();
 
-productRouters.get('/', getProducts);
+productRouters.get('/', validatePagination, getProducts);
 productRouters.get('/:productId', doesProductExist, getProductById);
 
 export default productRouters;

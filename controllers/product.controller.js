@@ -2,8 +2,9 @@ import { Product } from '../models';
 import { serverResponse, paginate } from '../helpers';
 
 export const getProducts = (req, res) => {
-  const productsList = Product.find();
-  const products = paginate(productsList, 4, 1);
+  const { page, pageSize } = req.query;
+  const productsList = Product.find({ release_date: 1 });
+  const products = paginate(productsList, pageSize, page);
   return serverResponse(res, 200, 'Success', products);
 };
 
