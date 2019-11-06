@@ -23,4 +23,13 @@ describe('Product', () => {
         done();
       });
   });
+  it('Should not get product details which does not exist', done => {
+    chai
+      .request(server)
+      .get('/api/products/345')
+      .end((err, res) => {
+        expect(res.body).to.have.status(404);
+        done();
+      });
+  });
 });
