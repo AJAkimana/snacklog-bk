@@ -1,4 +1,4 @@
-# Backlog for Sneaker City [![Build Status](https://travis-ci.org/AJAkimana/snacklog-bk.svg?branch=develop)](https://travis-ci.org/AJAkimana/snacklog-bk)
+# Backlog for Sneaker City - APIs [![Build Status](https://travis-ci.org/AJAkimana/sneaker-city-api.svg?branch=develop)](https://travis-ci.org/AJAkimana/sneaker-city-api)
 
 Sneaker City is a brand new online-only store for sneaker enthusiasts.
 
