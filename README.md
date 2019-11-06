@@ -1,4 +1,4 @@
-# Backlog for Sneaker City [![Build Status](https://travis-ci.org/AJAkimana/snacklog-bk.svg?branch=develop)](https://travis-ci.org/AJAkimana/snacklog-bk) [![Coverage Status](https://coveralls.io/repos/github/AJAkimana/snacklog-bk/badge.svg?branch=develop)](https://coveralls.io/github/AJAkimana/snacklog-bk?branch=develop)
+# Backlog for Sneaker City [![Build Status](https://travis-ci.org/AJAkimana/snacklog-bk.svg?branch=develop)](https://travis-ci.org/AJAkimana/snacklog-bk)
 
 Sneaker City is a brand new online-only store for sneaker enthusiasts.
 
@@ -23,8 +23,8 @@ Before installing, [download and install Node.js](https://nodejs.org/en/download
 The quickest way to setup Sneaker app is as shown below:
 
 ```
-git clone git@github.com:AJAkimana/snacklog-bk.git
-cd snacklog-bk
+git clone git@github.com:AJAkimana/sneaker-city-api.git
+cd sneaker-city-api
 ```
 
 Install dependencies:
